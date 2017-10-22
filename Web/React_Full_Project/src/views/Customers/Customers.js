@@ -70,7 +70,7 @@ class Customers extends Component {
                     <Col xs="12" sm="6" md="4">
                         <Card>
                             <CardHeader>
-                                <i className="fa fa-align-justify" /> Table Number :
+                                <i className="fa fa-align-justify" /> Table Number : 3
                             </CardHeader>
                             <CardBody>
                                 <Table responsive>
