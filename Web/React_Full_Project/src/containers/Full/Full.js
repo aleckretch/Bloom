@@ -49,13 +49,13 @@ class Full extends Component {
 
     componentDidMount() {
         const socket = socketIOClient(endpoint);
-        socket.on("ServerNotifyForPayment", data =>
-
+        socket.on("ServerNotifyForPayment", function(data) {
+            console.log(data);
             this.setState({
                 notificationResponse: data,
                 receivedResponse: true
             })
-        );
+        }.bind(this));
 
         console.log(this.state.notificationResponse);
     }
@@ -68,7 +68,7 @@ class Full extends Component {
 
     togglePayment() {
         this.setState({
-            paymentProcessModal: !this.state.paymentProcessModal
+            receivedResponse: !this.state.receivedResponse
         });
     }
 
@@ -82,7 +82,7 @@ class Full extends Component {
             <Breadcrumb />
             <Container fluid>
                 {this.state.receivedResponse &&
-                    <Modal isOpen={this.state.paymentProcessModal} toggle={this.togglePayment} className={this.props.className}>
+                    <Modal isOpen={this.state.receivedResponse} toggle={this.togglePayment} className={this.props.className}>
                         <ModalHeader toggle={this.togglePayment}>Ready to process payment for table {this.state.notificationResponse[0].table_id}</ModalHeader>
                         <ModalBody>
                             Table number {this.state.notificationResponse[0].table_id} is ready for its payment processing of ${this.state.notificationResponse[0].total_bill}
