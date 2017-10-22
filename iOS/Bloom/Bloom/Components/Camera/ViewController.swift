@@ -28,7 +28,27 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         openCamera()
-        // Do any additional setup after loading the view, typically from a nib.
+        let firstName = "Alec"
+        let lastName = "Kretch"
+        let phoneNumber = "216-789-5293"
+        let emailAddress = "aleckretch@gmail.com"
+        let addressLine1 = "35175 Miles Rd."
+        let addressCity = "Moreland Hills"
+        let addressState = "OH"
+        let addressZip = "44022"
+        let cardNumber = "5466 3081 3578 2590"
+        let cardExpiration = "03/2020"
+        AddCardManager.shared.createCustomerInBackground(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, emailAddress: emailAddress, addressLine1: addressLine1, addressCity: addressCity, addressState: addressState, addressZip: addressZip) { (success, customerId) in
+            if success, let userId = customerId {
+                AddCardManager.shared.createPaymentAccountInBackground(customerId: userId, cardNumber: cardNumber, cardExpiration: cardExpiration, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, addressLine1: addressLine1, addressCity: addressCity, addressState: addressState, addressZip: addressZip, completion: { (success) in
+                    if success {
+                        print("CARD ADDED")
+                    } else {
+                        print("ERROR ADDING CARD")
+                    }
+                })
+            }
+        }
     }
     
     func openCamera() {

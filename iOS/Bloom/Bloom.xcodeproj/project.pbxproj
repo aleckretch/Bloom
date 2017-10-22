@@ -14,6 +14,9 @@
 		8906BFA41F9BD56F0081702F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8906BFA21F9BD56F0081702F /* LaunchScreen.storyboard */; };
 		8906BFAD1F9C0AB90081702F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906BFAC1F9C0AB90081702F /* AppDelegate.swift */; };
 		8906BFB11F9C0AC20081702F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906BFB01F9C0AC20081702F /* ViewController.swift */; };
+		8906BFB31F9C0B210081702F /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906BFB21F9C0B210081702F /* Networking.swift */; };
+		8906BFB61F9C0B9A0081702F /* AddCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906BFB51F9C0B9A0081702F /* AddCardManager.swift */; };
+		8906BFB81F9C0DE20081702F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906BFB71F9C0DE20081702F /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		8906BFA51F9BD56F0081702F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8906BFAC1F9C0AB90081702F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8906BFB01F9C0AC20081702F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8906BFB21F9C0B210081702F /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		8906BFB51F9C0B9A0081702F /* AddCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardManager.swift; sourceTree = "<group>"; };
+		8906BFB71F9C0DE20081702F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		9979E14F3AEC8A88FB82024E /* Pods-Bloom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.release.xcconfig"; sourceTree = "<group>"; };
 		9E670C3CC02ACE0796074B48 /* Pods-Bloom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.debug.xcconfig"; sourceTree = "<group>"; };
 		C34D9D07BDC5B8CDD45A8DDB /* Pods_Bloom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bloom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				8906BFAC1F9C0AB90081702F /* AppDelegate.swift */,
+				8906BFB71F9C0DE20081702F /* Constant.swift */,
+				8906BFB21F9C0B210081702F /* Networking.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -103,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				8906BFAF1F9C0AC20081702F /* Camera */,
+				8906BFB41F9C0B790081702F /* Add Card */,
 			);
 			name = Components;
 			path = Bloom/Components;
@@ -114,6 +123,14 @@
 				8906BFB01F9C0AC20081702F /* ViewController.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		8906BFB41F9C0B790081702F /* Add Card */ = {
+			isa = PBXGroup;
+			children = (
+				8906BFB51F9C0B9A0081702F /* AddCardManager.swift */,
+			);
+			path = "Add Card";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,7 +258,10 @@
 			files = (
 				8906BFB11F9C0AC20081702F /* ViewController.swift in Sources */,
 				8906BFAD1F9C0AB90081702F /* AppDelegate.swift in Sources */,
+				8906BFB61F9C0B9A0081702F /* AddCardManager.swift in Sources */,
 				8906BF9F1F9BD56F0081702F /* Bloom.xcdatamodeld in Sources */,
+				8906BFB31F9C0B210081702F /* Networking.swift in Sources */,
+				8906BFB81F9C0DE20081702F /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
