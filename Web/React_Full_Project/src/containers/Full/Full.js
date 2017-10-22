@@ -31,6 +31,8 @@ import SimpleLineIcons from '../../views/Icons/SimpleLineIcons/';
 import {MuiThemeProvider} from "material-ui";
 
 const serverNotificationPayment = "ServerNotifyForPayment";
+const endpoint = "http://54.219.137.151:3333";
+
 class Full extends Component {
 
   constructor() {
@@ -40,23 +42,26 @@ class Full extends Component {
         this.state = {
             receivedResponse: false,
             notificationResponse: [],
-            endpoint: "http://localhost:4001",
             paymentProcessModal: false
 
         };
     }
 
     componentDidMount() {
-        const { endpoint } = this.state;
         const socket = socketIOClient(endpoint);
-        socket.on(serverNotificationPayment, data => this.setState({
-            notificationResponse: data,
-            receivedResponse: true
-        }));
+        socket.on("ServerNotifyForPayment", data =>
+
+            this.setState({
+                notificationResponse: data,
+                receivedResponse: true
+            })
+        );
+
+        console.log(this.state.notificationResponse);
     }
 
     processPayment() {
-        const socket = socketIOClient(this.state.endpoint);
+        const socket = socketIOClient(endpoint);
         socket.emit("ServerConfirmPayment", this.state.notificationResponse[0].table_id);
         this.togglePayment();
     }

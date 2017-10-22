@@ -5,13 +5,13 @@ import socketIOClient from "socket.io-client";
 
 
 const serverNotifyNewOrder = "ServerNotifyNewOrder";
+const endpoint = "http://54.219.137.151:3333";
 class Customers extends Component {
 
     constructor() {
         super();
         this.state = ({
             tableOrderData: [],
-            endpoint: "http://localhost:4001"
         })
     }
 
@@ -24,10 +24,11 @@ class Customers extends Component {
     };
 
     componentDidMount() {
-        const socket = socketIOClient(this.state.endpoint);
+        const socket = socketIOClient(endpoint);
         socket.on(serverNotifyNewOrder, data => this.setState({
             tableOrderData: data
-        }))
+        }));
+        console.log(this.state.tableOrderData);
     }
 
     render() {
