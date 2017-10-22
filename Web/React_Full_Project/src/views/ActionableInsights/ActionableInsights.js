@@ -98,7 +98,7 @@ class ActionableInsights extends Component {
                                         floatingLabelText="Content"
                                         multiLine={true}
                                         value={'We have a limited promotion only for you.' + '\n' +
-                                        'Come visit us and receive a 20% on our Fish Fillet, a dish that has been recommended by many.' + '\n' +
+                                        'Come visit us and receive a 20% off on our Fish Fillet, a dish that has been recommended by many.' + '\n' +
                                         'The promotion only lasts for a week, so hurry down and come visit our store at 715 Stewart Dr, SunnyVale, CA 91130.\n' +
                                         'NOTE: Please show this email to qualify for this offer.'}
                                         fullWidth={true}
@@ -152,7 +152,7 @@ class ActionableInsights extends Component {
                                         floatingLabelText="Content"
                                         multiLine={true}
                                         value={'We have a limited promotion just for you.' + '\n' +
-                                        'Come visit us and receive a 20% everything on the menu!' + '\n' +
+                                        'Come visit us and receive a 20% off for everything on the menu!' + '\n' +
                                         'The promotion only lasts for a week, so hurry down and come visit our store at 715 Stewart Dr, SunnyVale, CA 91130.\n' +
                                         'NOTE: Please show this email to qualify for this offer.'}
                                         fullWidth={true}
