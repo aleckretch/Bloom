@@ -3,20 +3,20 @@ const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const sqlConnection = require('./database');
+const socketIo = require("socket.io");
+
 //const cors = require('cors');
-var server = require('http').createServer(app);
 var allowedOrigins = "http://localhost:8081";
-var corsOptions = {
+var corsOptions = { 
   origin: 'http://localhost:8081',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-var io = require('socket.io').listen(server);//(server, {origins: allowedOrigins});
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', allowedOrigins);
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept-Type');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-});
+// app.use(function (req, res, next) {
+//     res.header('Access-Control-Allow-Origin', allowedOrigins);
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept-Type');
+//     res.header('Access-Control-Allow-Credentials', 'true');
+//     next();
+// });
 //var io = require('socket.io').listen(server);//(server, {origins: allowedOrigins});
 //app.use(cors(corsOptions));
 app.use(bodyParser.json());
@@ -74,6 +74,10 @@ app.post('/user_check_in', (req, res) => {
 
 });
 
+var server = require('http').createServer(app);
+var io = socketIo(server);//(server, {origins: allowedOrigins});
+
+
 app.post('/add_order', (req, res) => {
     //
     io.emit("ServerNotifyNewOrder", res);
@@ -120,6 +124,8 @@ io.on("ServerConfirmPayment", function(data) {
         });
 
 });
+
+
 io.on('connection',function(socket){  
     console.log("A user is connected");
 });
