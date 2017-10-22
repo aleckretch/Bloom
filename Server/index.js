@@ -2,13 +2,24 @@ const express =  require('express');
 const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
-const sqlConnection = require('./database')
+const sqlConnection = require('./database');
+//const cors = require('cors');
 var server = require('http').createServer(app);
-var io = require('socket.io')(server);
-
-
-app.use(bodyParser.json())
-
+var allowedOrigins = "http://localhost:8081";
+var corsOptions = {
+  origin: 'http://localhost:8081',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+var io = require('socket.io').listen(server);//(server, {origins: allowedOrigins});
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', allowedOrigins);
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept-Type');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    next();
+});
+//var io = require('socket.io').listen(server);//(server, {origins: allowedOrigins});
+//app.use(cors(corsOptions));
+app.use(bodyParser.json());
 app.post('/user_check_in', (req, res) => {
     console.log('youre in');
     console.log(req);
@@ -18,7 +29,27 @@ app.post('/user_check_in', (req, res) => {
     var email = req.body.email;
     var phone_number = req.body.phone_number;
     let connection = sqlConnection.createConnection();
-    let query = 'INSERT INTO user_table (id, table_id,email,phone_number) VALUES (' + user_id +',' + table_id +',"'+email +'",'+ phone_number +');'
+    let check_query = 'SELECT * FROM user_table WHERE id='+user_id+';';
+    connection.query(check_query, function(err, result) {
+       if(err) {
+        console.log(err);
+	res.status(503);
+	}
+       if(result) {
+          let select_query = 'SELECT name, price FROM food WHERE restaurant_id=' +restaurant_id +";";
+          connection.query(select_query, function(err, result)  {
+                if(err) {
+                   console.log(err);
+                   res.status(503);
+                } else if(!result) {
+                    res.json("No results");
+                } else {
+                    res.json(result);
+                }
+
+            });
+       } else {
+            let query = 'INSERT INTO user_table (id, table_id,email,phone_number) VALUES (' + user_id +',' + table_id +',"'+email +'",'+ phone_number +');'
     connection.query(query, function(err, result) {
         if(!err) {
             let select_query = 'SELECT name, price FROM food WHERE restaurant_id=' +restaurant_id +";";
@@ -38,6 +69,8 @@ app.post('/user_check_in', (req, res) => {
             console.log(err);
         }
     });
+         }
+    })
 
 });
 
@@ -48,7 +81,7 @@ app.post('/add_order', (req, res) => {
 });
 
 app.post('/user_check_out',  (req,res) => {
-    let user_id = req.user_id;
+    let user_id = req.body.user_id;
     let query = 'SELECT u_t.table_id, r_t.total_bill FROM user_table u_t, restaurant_table r_t WHERE u_t.id=' + user_id + ' AND u_t.table_id=r_t.id;';
     let connection = sqlConnection.createConnection();
     connection.query(query, function(err, result) {
@@ -58,7 +91,8 @@ app.post('/user_check_out',  (req,res) => {
          } else if(!result) {
              res.json("No results");
          } else {
-            io.emit("ServerNotifyForPayment",json(result));
+	    console.log(result);
+            io.emit("ServerNotifyForPayment",result);
          }
         });
 });
@@ -86,8 +120,11 @@ io.on("ServerConfirmPayment", function(data) {
         });
 
 });
+io.on('connection',function(socket){  
+    console.log("A user is connected");
+});
 
-app.listen(3333);
+server.listen(3333);
 console.log('server up on 3333')
 
 
