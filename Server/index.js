@@ -10,14 +10,18 @@ var io = require('socket.io')(server);
 app.use(bodyParser.json())
 
 app.post('/user_check_in', (req, res) => {
+    console.log('youre in');
+    console.log(req);
     var user_id = req.body.user_id;
     var table_id = req.body.table_id;
     var restaurant_id = req.body.restaurant_id;
+    var email = req.body.email;
+    var phone_number = req.body.phone_number;
     let connection = sqlConnection.createConnection();
-    let query = 'INSERT INTO User (user_id, table_id) VALUES (' + user_id +',' + table_id + ');'
+    let query = 'INSERT INTO user_table (id, table_id,email,phone_number) VALUES (' + user_id +',' + table_id +',"'+email +'",'+ phone_number +');'
     connection.query(query, function(err, result) {
         if(!err) {
-            let select_query = 'SELECT name, value FROM Food WHERE restaurant_id=' +restaurant_id +";";
+            let select_query = 'SELECT name, price FROM food WHERE restaurant_id=' +restaurant_id +";";
             connection.query(select_query, function(err, result)  {
                 if(err) {
                    console.log(err);
