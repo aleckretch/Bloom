@@ -8,8 +8,8 @@ DROP TABLE IF EXISTS restaurant_table;
 CREATE TABLE `restaurant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `performance` int(11) NOT NULL,
-  `service_rating` varchar(11) NOT NULL,
+  `performance` decimal(11,2) NOT NULL,
+  `service_rating` decimal(11,2) NOT NULL,
   `number_of_visits` int(11) NOT NULL UNIQUE,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='';
