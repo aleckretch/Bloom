@@ -10,7 +10,7 @@ CREATE TABLE `restaurant` (
   `name` varchar(45) NOT NULL,
   `performance` decimal(11,2) NOT NULL,
   `service_rating` decimal(11,2) NOT NULL,
-  `number_of_visits` int(11) NOT NULL UNIQUE,
+  `number_of_visits` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='';
 
@@ -20,7 +20,7 @@ CREATE TABLE `food` (
   `name` varchar(45) NOT NULL,
   `rating` int(11) NOT NULL,
   `number_of_orders` int(11) NOT NULL,
-  `restaurant_id` int(11) NOT NULL UNIQUE,
+  `restaurant_id` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `food_restaurant_id_fk_idx` (`restaurant_id`),
