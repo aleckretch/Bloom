@@ -1,13 +1,12 @@
 const mysql = require('mysql');
 const env = process.env.NODE_ENV || 'development';
-const config = require('../config')[env];
 
 module.exports.createConnection = function createConnection() {
     let connection = mysql.createConnection({
-        host: config.database.host,
-        user: config.database.user,
-        password: config.database.pass,
-        database: config.database.db
+        host: 'localhost',
+        user: 'root',
+        password: 'root',
+        database: 'bloom_server'
     });
     connection.connect(function(err){
         if(!err) {
