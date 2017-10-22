@@ -50,7 +50,7 @@ CREATE TABLE `user_table` (
   `id` int(11) NOT NULL,
   `table_id` int(11) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `phone_number` int(11) NOT NULL,
+  `phone_number` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_table_id_fk_idx` (`table_id`),
   CONSTRAINT `user_table_id_fk` FOREIGN KEY (`table_id`) REFERENCES `restaurant_table` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
