@@ -113,13 +113,51 @@ io.on("ServerConfirmPayment", function(data) {
              res.json("No results");
          } else {
              //make API call to worldpay
+             var https = require('https');             
              let user_id = result.id;
              let total_bill = result.total_bill;
-             let developerId = 12345678
-             let version = "1.0"
-             let secureNetId = "8011038"
-             let secureKey = "DvAdFBTiBODp"
- 
+             let developerId = 12345678;
+             let version = "1.0";
+             let secureNetId = "8011038";
+             let secureKey = "DvAdFBTiBODp";
+             let url = 'https://gwapi.demo.securenet.com/api/Payments/Charge'
+             let payment_id = 1;
+             payload = {
+                amount: total_bill,
+                paymentVaultToken: {
+                  customerId: user_id,
+                  paymentMethodId: '1'
+                },
+                developerApplication: {
+                  developerId: 12345678,
+                  version: '1.0'
+                }
+              };
+              var json = JSON.stringify(payload);
+              var options = {                                         
+                host: 'gwapi.demo.securenet.com',                     
+                port: 443,                                            
+                path: '/api/Payments/Charge',                         
+                method: 'POST',                                       
+                headers: {                                            
+                  'Content-Type': 'application/json',                 
+                  'Content-Length': Buffer.byteLength(json, 'utf8'),  
+                  'Authorization': 'Basic ' + new Buffer(secureNetId + ':' + secureKey).toString('base64')
+                }
+              };
+              var req = https.request(options, function(res) {        
+                var body = '';                                        
+                res.on('data', function(d) { body += d; });           
+                res.on('end', function () {                           
+                  var r = JSON.parse(body);                           
+                  console.log("http response code: ", res.statusCode);
+                });
+              });
+              
+              req.on('error', function(e) { console.error(e); });     
+              req.write(json);                                        
+              req.end(); 
+
          }
         });
 
