@@ -90,6 +90,7 @@ final class AddCardViewController: UIViewController {
                                 UserDefaults.standard.set(addressZip, forKey: "addressZip")
                                 UserDefaults.standard.set(cardNumber, forKey: "cardNumber")
                                 UserDefaults.standard.set(customerId, forKey: "cardExpiration")
+                                self.delegate?.addCardViewControllerAddedCardSuccessfully(self)
                                 self.onTapButtonDismiss()
                             } else {
                                 let alertController = UIAlertController(title: "An Error Occurred", message: "Make sure you are connected to the Internet and all of your information is correct.", preferredStyle: .alert)
