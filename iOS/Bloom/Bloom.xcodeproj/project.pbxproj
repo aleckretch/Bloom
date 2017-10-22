@@ -17,6 +17,14 @@
 		8906BFB31F9C0B210081702F /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906BFB21F9C0B210081702F /* Networking.swift */; };
 		8906BFB61F9C0B9A0081702F /* AddCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906BFB51F9C0B9A0081702F /* AddCardManager.swift */; };
 		8906BFB81F9C0DE20081702F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906BFB71F9C0DE20081702F /* Constant.swift */; };
+		898AECF21F9CFC8F0009E01F /* AddCardSaveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898AECF11F9CFC8F0009E01F /* AddCardSaveTableViewCell.swift */; };
+		89B57F561F9CE0B6004574DC /* AddCardSmallHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B57F551F9CE0B6004574DC /* AddCardSmallHeaderTableViewCell.swift */; };
+		89B57F5A1F9CE499004574DC /* AddCardBillingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B57F591F9CE499004574DC /* AddCardBillingTableViewCell.swift */; };
+		89C240431F9C954900CB1E6E /* AddCardTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C240421F9C954900CB1E6E /* AddCardTextTableViewCell.swift */; };
+		89C240451F9C9BCA00CB1E6E /* AddCardDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C240441F9C9BCA00CB1E6E /* AddCardDetailsTableViewCell.swift */; };
+		89C240471F9CC01500CB1E6E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C240461F9CC01500CB1E6E /* Extension.swift */; };
+		89E88FDF1F9C76A400E0B51B /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E88FDE1F9C76A400E0B51B /* AddCardViewController.swift */; };
+		89E88FE21F9C8DA700E0B51B /* AddCardHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E88FE11F9C8DA700E0B51B /* AddCardHeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +39,14 @@
 		8906BFB21F9C0B210081702F /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		8906BFB51F9C0B9A0081702F /* AddCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardManager.swift; sourceTree = "<group>"; };
 		8906BFB71F9C0DE20081702F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		898AECF11F9CFC8F0009E01F /* AddCardSaveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardSaveTableViewCell.swift; sourceTree = "<group>"; };
+		89B57F551F9CE0B6004574DC /* AddCardSmallHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardSmallHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		89B57F591F9CE499004574DC /* AddCardBillingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBillingTableViewCell.swift; sourceTree = "<group>"; };
+		89C240421F9C954900CB1E6E /* AddCardTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardTextTableViewCell.swift; sourceTree = "<group>"; };
+		89C240441F9C9BCA00CB1E6E /* AddCardDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		89C240461F9CC01500CB1E6E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		89E88FDE1F9C76A400E0B51B /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		89E88FE11F9C8DA700E0B51B /* AddCardHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		9979E14F3AEC8A88FB82024E /* Pods-Bloom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.release.xcconfig"; sourceTree = "<group>"; };
 		9E670C3CC02ACE0796074B48 /* Pods-Bloom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.debug.xcconfig"; sourceTree = "<group>"; };
 		C34D9D07BDC5B8CDD45A8DDB /* Pods_Bloom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bloom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +118,7 @@
 			children = (
 				8906BFAC1F9C0AB90081702F /* AppDelegate.swift */,
 				8906BFB71F9C0DE20081702F /* Constant.swift */,
+				89C240461F9CC01500CB1E6E /* Extension.swift */,
 				8906BFB21F9C0B210081702F /* Networking.swift */,
 			);
 			path = Shared;
@@ -129,8 +146,23 @@
 			isa = PBXGroup;
 			children = (
 				8906BFB51F9C0B9A0081702F /* AddCardManager.swift */,
+				89E88FDE1F9C76A400E0B51B /* AddCardViewController.swift */,
+				89E88FE01F9C8D8400E0B51B /* Cells */,
 			);
 			path = "Add Card";
+			sourceTree = "<group>";
+		};
+		89E88FE01F9C8D8400E0B51B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				89E88FE11F9C8DA700E0B51B /* AddCardHeaderTableViewCell.swift */,
+				89C240421F9C954900CB1E6E /* AddCardTextTableViewCell.swift */,
+				89C240441F9C9BCA00CB1E6E /* AddCardDetailsTableViewCell.swift */,
+				89B57F551F9CE0B6004574DC /* AddCardSmallHeaderTableViewCell.swift */,
+				89B57F591F9CE499004574DC /* AddCardBillingTableViewCell.swift */,
+				898AECF11F9CFC8F0009E01F /* AddCardSaveTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,11 +288,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89B57F561F9CE0B6004574DC /* AddCardSmallHeaderTableViewCell.swift in Sources */,
+				89E88FDF1F9C76A400E0B51B /* AddCardViewController.swift in Sources */,
+				89C240431F9C954900CB1E6E /* AddCardTextTableViewCell.swift in Sources */,
+				89B57F5A1F9CE499004574DC /* AddCardBillingTableViewCell.swift in Sources */,
 				8906BFB11F9C0AC20081702F /* ViewController.swift in Sources */,
 				8906BFAD1F9C0AB90081702F /* AppDelegate.swift in Sources */,
+				89C240471F9CC01500CB1E6E /* Extension.swift in Sources */,
 				8906BFB61F9C0B9A0081702F /* AddCardManager.swift in Sources */,
+				89E88FE21F9C8DA700E0B51B /* AddCardHeaderTableViewCell.swift in Sources */,
 				8906BF9F1F9BD56F0081702F /* Bloom.xcdatamodeld in Sources */,
+				898AECF21F9CFC8F0009E01F /* AddCardSaveTableViewCell.swift in Sources */,
 				8906BFB31F9C0B210081702F /* Networking.swift in Sources */,
+				89C240451F9C9BCA00CB1E6E /* AddCardDetailsTableViewCell.swift in Sources */,
 				8906BFB81F9C0DE20081702F /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,7 +447,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aleckretch.Bloom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -424,7 +464,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aleckretch.Bloom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

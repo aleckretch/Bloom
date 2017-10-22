@@ -24,30 +24,32 @@ class ViewController: UIViewController {
             addCardButton.addTarget(self, action: #selector(onTapAddCardButton), for: .touchUpInside)
         }
     }
-
+    
+    @IBOutlet weak var needsCardAlertView: UIView! {
+        didSet {
+            needsCardAlertView.isUserInteractionEnabled = false
+            needsCardAlertView.backgroundColor = UIColor.red
+            needsCardAlertView.clipsToBounds = true
+            needsCardAlertView.layer.cornerRadius = 7.0
+        }
+    }
+    
+    @IBOutlet weak var exclamationLabel: UILabel! {
+        didSet {
+            exclamationLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
+            exclamationLabel.textColor = UIColor.white
+            exclamationLabel.text = "!"
+            exclamationLabel.textAlignment = .center
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         openCamera()
-        let firstName = "Alec"
-        let lastName = "Kretch"
-        let phoneNumber = "216-789-5293"
-        let emailAddress = "aleckretch@gmail.com"
-        let addressLine1 = "35175 Miles Rd."
-        let addressCity = "Moreland Hills"
-        let addressState = "OH"
-        let addressZip = "44022"
-        let cardNumber = "5466 3081 3578 2590"
-        let cardExpiration = "03/2020"
-        AddCardManager.shared.createCustomerInBackground(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, emailAddress: emailAddress, addressLine1: addressLine1, addressCity: addressCity, addressState: addressState, addressZip: addressZip) { (success, customerId) in
-            if success, let userId = customerId {
-                AddCardManager.shared.createPaymentAccountInBackground(customerId: userId, cardNumber: cardNumber, cardExpiration: cardExpiration, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, addressLine1: addressLine1, addressCity: addressCity, addressState: addressState, addressZip: addressZip, completion: { (success) in
-                    if success {
-                        print("CARD ADDED")
-                    } else {
-                        print("ERROR ADDING CARD")
-                    }
-                })
-            }
+        self.view.bringSubview(toFront: self.addCardButton)
+        self.view.bringSubview(toFront: self.needsCardAlertView)
+        if UserDefaults.standard.string(forKey: "customerId") != nil {
+            self.needsCardAlertView.isHidden = true
         }
     }
     
@@ -72,8 +74,15 @@ class ViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "AddCardSegue", let addCardViewController = segue.destination as? AddCardViewController {
+            addCardViewController.delegate = self
+        }
+    }
+    
     @objc func onTapAddCardButton() {
-        print("Add card")
+        performSegue(withIdentifier: "AddCardSegue", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,5 +94,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: AVCaptureMetadataOutputObjectsDelegate {
+    
+}
+
+extension ViewController: AddCardViewControllerDelegate {
+    
+    func addCardViewControllerAddedCardSuccessfully(_ addCardViewController: AddCardViewController) {
+        needsCardAlertView.isHidden = true
+    }
     
 }
